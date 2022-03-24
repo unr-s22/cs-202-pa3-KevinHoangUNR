@@ -1,3 +1,6 @@
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
+
 #include <iostream>
 #include <vector>
 #include "Money.h"
@@ -16,9 +19,10 @@ class Account {
    */
   private:
     std::vector<Money*> balance;
-    bool isUpdated;
-    int numTransactions = 1;
-    int lastUpdatedTransaction;
+    bool isBalanceUpdated;
+    int lastKnownBalance;
+    int numWithdrawals;
+    int numDeposits;
 
   public:
     Account(Money*);
@@ -26,3 +30,5 @@ class Account {
     void makeWithdrawals(Money*);
     int getBalance();
 };
+
+#endif

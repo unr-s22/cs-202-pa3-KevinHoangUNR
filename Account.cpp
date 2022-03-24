@@ -6,11 +6,14 @@ Account::Account(Money* initialBalance) {
 
 void Account::makeDeposit(Money* deposit) {
   balance.push_back(deposit);
-  numTransactions++;
+  isBalanceUpdated = false;
+  numDeposits++;
 }
 
 void Account::makeWithdrawals(Money* withdrawal) {
+  withdrawal->operator-();
   balance.push_back(withdrawal);
-  numTransactions++;
+  isBalanceUpdated = false;
+  numWithdrawals++;
 }
 
