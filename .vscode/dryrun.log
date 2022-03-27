@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/kevin/Desktop/cs202/programmingAssignemnts/cs-202-pa3-KevinHoangUNR'
+g++ -c Account.cpp
+g++ -o pa3 main.o Account.o Money.o
+make: Leaving directory `/Users/kevin/Desktop/cs202/programmingAssignemnts/cs-202-pa3-KevinHoangUNR'
+ 
