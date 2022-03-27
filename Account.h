@@ -2,6 +2,7 @@
 #define ACCOUNT_H
 
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include "Money.h"
 
@@ -18,17 +19,19 @@ class Account {
    * TODO: this shit
    */
   private:
-    std::vector<Money*> balance;
+    std::vector<Money> balance;
     bool isBalanceUpdated;
-    int lastKnownBalance;
-    int numWithdrawals;
-    int numDeposits;
+    Money lastKnownBalance;
+    int numWithdrawals = 0;
+    int numDeposits = 0;
+    int totalActions = 0;
 
   public:
-    Account(Money*);
-    void makeDeposit(Money*);
-    void makeWithdrawals(Money*);
-    int getBalance();
+    Account(Money);
+    void makeDeposit(Money);
+    void makeWithdrawal(Money);
+    Money getBalance();
+    friend std::ostream& operator<< (std::ostream& os, const Account& account);
 };
 
 #endif

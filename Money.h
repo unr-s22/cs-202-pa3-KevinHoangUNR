@@ -12,8 +12,9 @@ class Money {
     Money();
     Money(int dollars, int cents);
 
-    void operator- (const Money& newMoney);
+    void operator- ();
     void operator+ (const Money& newMoney);
+    void operator=(const Money& newMoney);
     bool operator< (const Money& comparison);
     bool operator> (const Money& comparison);
     friend std::ostream& operator<< (std::ostream& os, const Money& money);

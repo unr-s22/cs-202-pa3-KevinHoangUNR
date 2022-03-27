@@ -10,13 +10,9 @@ Money::Money() {
   m_cents = 0;
 }
 
-void Money::operator-(const Money& newMoney) {
-  m_cents -= newMoney.m_cents;
-  if (m_cents < 0) {
-    m_cents += 100;
-    m_dollars --;
-  }
-  m_dollars -= newMoney.m_dollars;
+void Money::operator-() {
+  m_cents *= -1;
+  m_dollars *= -1;
 }
 
 void Money::operator+(const Money& newMoney) {
@@ -26,6 +22,11 @@ void Money::operator+(const Money& newMoney) {
     m_dollars ++;
   }
   m_dollars += newMoney.m_dollars;
+}
+
+void Money::operator=(const Money& newMoney) {
+  m_cents = newMoney.m_cents;
+  m_dollars = newMoney.m_dollars;
 }
 
 bool Money::operator<(const Money& comparison) {
