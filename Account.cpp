@@ -39,6 +39,7 @@ std::ostream& operator<< (std::ostream& os, const Account& account) {
   for (auto& depo: account.balance) {
     if (Money(0,0) < depo) {
       tos << "(" << counter << ") " << depo << std::endl;
+      counter++;
     }
   }
   counter = 1;
@@ -49,6 +50,7 @@ std::ostream& operator<< (std::ostream& os, const Account& account) {
     if (Money(0,0) > withdr) {
       //-withdr;
       tos << "(" << counter << ") " << withdr << std::endl;
+      counter++;
     }
   }
 
