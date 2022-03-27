@@ -12,7 +12,7 @@ class Money {
     Money();
     Money(int dollars, int cents);
 
-    void operator- ();
+    Money operator- ();
     void operator+ (const Money& newMoney);
     void operator=(const Money& newMoney);
     bool operator< (const Money& comparison);

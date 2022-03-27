@@ -11,8 +11,8 @@ void Account::makeDeposit(Money deposit) {
 }
 
 void Account::makeWithdrawal(Money withdrawal) {
-  withdrawal.operator-();
-  balance.push_back(withdrawal);
+  Money newAction = withdrawal.operator-();
+  balance.push_back(newAction);
   isBalanceUpdated = false;
   numWithdrawals++;
 }
@@ -30,6 +30,7 @@ Money Account::getBalance() {
 std::ostream& operator<< (std::ostream& os, const Account& account) {
   std::stringstream tos;
   int counter = 1;
+  Money holderVal;
   tos << "Account Details" << std::endl;
   tos << "-------------------------" << std::endl;
   tos << "Current Balance: " << /*account.getBalance() << */ std::endl;
@@ -48,8 +49,8 @@ std::ostream& operator<< (std::ostream& os, const Account& account) {
   tos << "-------------------------" << std::endl;
   for (auto& withdr: account.balance) {
     if (Money(0,0) > withdr) {
-      //-withdr;
-      tos << "(" << counter << ") " << withdr << std::endl;
+      //holderVal = -withdr;
+      tos << "(" << counter << ") " << withdr /*This should be holderVal */ << std::endl;
       counter++;
     }
   }

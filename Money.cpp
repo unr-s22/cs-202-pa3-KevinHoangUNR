@@ -10,9 +10,9 @@ Money::Money() {
   m_cents = 0;
 }
 
-void Money::operator-() {
-  m_cents *= -1;
-  m_dollars *= -1;
+Money Money::operator-() {
+ 
+  return Money(m_dollars * -1, m_cents * -1);
 }
 
 void Money::operator+(const Money& newMoney) {
