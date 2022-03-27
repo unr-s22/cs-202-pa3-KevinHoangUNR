@@ -44,13 +44,13 @@ std::ostream& operator<< (std::ostream& os, const Account& account) {
   counter = 1;
   tos << "-------------------------" << std::endl;
   tos << "Number of Withdrawals: " << account.numWithdrawals << std::endl;
+  tos << "-------------------------" << std::endl;
   for (auto& withdr: account.balance) {
     if (Money(0,0) > withdr) {
       //-withdr;
       tos << "(" << counter << ") " << withdr << std::endl;
     }
   }
-  tos << "-------------------------" << std::endl;
 
   os << tos.str();
   return os;
