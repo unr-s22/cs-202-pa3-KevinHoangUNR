@@ -11,7 +11,6 @@ void Account::makeDeposit(Money* deposit) {
 }
 
 void Account::makeWithdrawals(Money* withdrawal) {
-  withdrawal->operator-();
   balance.push_back(withdrawal);
   isBalanceUpdated = false;
   numWithdrawals++;

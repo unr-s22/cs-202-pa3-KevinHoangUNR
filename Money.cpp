@@ -10,13 +10,22 @@ Money::Money() {
   m_cents = 0;
 }
 
-void Money::operator-() {
-  m_dollars = -m_dollars;
-  m_cents = -m_cents;
+void Money::operator-(const Money& newMoney) {
+  m_cents -= newMoney.m_cents;
+  if (m_cents < 0) {
+    m_cents += 100;
+    m_dollars --;
+  }
+  m_dollars -= newMoney.m_dollars;
 }
 
-void Money::operator+() {
-
+void Money::operator+(const Money& newMoney) {
+  m_cents += newMoney.m_cents;
+  if (m_cents >= 100) {
+    m_cents -= 100;
+    m_dollars ++;
+  }
+  m_dollars += newMoney.m_dollars;
 }
 
 bool Money::operator<(const Money& comparison) {
@@ -38,6 +47,10 @@ bool Money::operator>(const Money& comparison) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Money& money) {
-  os << "$" << money.m_dollars << "." << money.m_cents << std::endl;
+  if (money.m_cents < 10) {
+    os << "$" << money.m_dollars << ".0" << money.m_cents;
+  }
+  else
+    os << "$" << money.m_dollars << "." << money.m_cents;
   return os;
 }
