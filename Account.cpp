@@ -17,13 +17,17 @@ void Account::makeWithdrawal(Money withdrawal) {
   numWithdrawals++;
 }
 
-Money Account::getBalance() {
-  
+void Account::calculateBalance() {
   if (!isBalanceUpdated) {
     for(totalActions; totalActions < (numWithdrawals + numDeposits); totalActions++) {
       lastKnownBalance + balance[totalActions];
     }
   }
+}
+
+Money Account::getBalance() {
+  //Note: Preferably this would calculate the balance and the return the value, but I can't seem to run any account functions inside the operator
+  //calculateBalance();
   return lastKnownBalance;
 }
 
@@ -33,7 +37,7 @@ std::ostream& operator<< (std::ostream& os, const Account& account) {
   Money holderVal;
   tos << "Account Details" << std::endl;
   tos << "-------------------------" << std::endl;
-  tos << "Current Balance: " << /*account.getBalance() << */ std::endl;
+  tos << "Current Balance: " << account.lastKnownBalance /*Preferably would be account.getBalance() */ << std::endl;
   tos << "-------------------------" << std::endl;
   tos << "Number of Deposits: " << account.numDeposits << std::endl;
   tos << "---------------------" << std::endl;
@@ -49,8 +53,8 @@ std::ostream& operator<< (std::ostream& os, const Account& account) {
   tos << "-------------------------" << std::endl;
   for (auto& withdr: account.balance) {
     if (Money(0,0) > withdr) {
-      //holderVal = -withdr;
-      tos << "(" << counter << ") " << withdr /*This should be holderVal */ << std::endl;
+      holderVal = withdr;
+      tos << "(" << counter << ") " << -holderVal << std::endl;
       counter++;
     }
   }

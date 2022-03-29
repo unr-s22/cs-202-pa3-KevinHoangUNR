@@ -21,6 +21,10 @@ void Money::operator+(const Money& newMoney) {
     m_cents -= 100;
     m_dollars ++;
   }
+  else if (m_cents < 0) {
+    m_cents += 100;
+    m_dollars --;
+  }
   m_dollars += newMoney.m_dollars;
 }
 

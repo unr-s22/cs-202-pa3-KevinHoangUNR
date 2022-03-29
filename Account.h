@@ -30,6 +30,7 @@ class Account {
     Account(Money);
     void makeDeposit(Money);
     void makeWithdrawal(Money);
+    void calculateBalance();
     Money getBalance();
     friend std::ostream& operator<< (std::ostream& os, const Account& account);
 };
