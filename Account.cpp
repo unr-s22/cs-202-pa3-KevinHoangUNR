@@ -23,6 +23,7 @@ void Account::calculateBalance() {
       lastKnownBalance + balance[totalActions];
     }
   }
+  isBalanceUpdated = true;
 }
 
 Money Account::getBalance() {
@@ -58,7 +59,6 @@ std::ostream& operator<< (std::ostream& os, const Account& account) {
       counter++;
     }
   }
-
   os << tos.str();
   return os;
 }
